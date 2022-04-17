@@ -17,22 +17,27 @@
     <style name="HeaderText">
         <item name="android:textSize">@dimen/_18sdp</item>
         <item name="android:textColor">@color/black3</item>
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
     </style>
     <style name="HeaderText.Small">
         <item name="android:textSize">@dimen/_12sdp</item>
         <item name="android:textColor">@color/dark_pink</item>
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
     </style>
 
     <style name="styTextBlack">
         <item name="android:textColor">@color/black3</item>
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
     </style>
     <style name="styTextBlack.Normal">
         <item name="android:textSize">@dimen/_14sdp</item>
         <item name="android:textColor">@color/black3</item>
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
     </style>
     <style name="styTextBlack.Small">
         <item name="android:textSize">@dimen/_10sdp</item>
         <item name="android:textColor">@color/black3</item>
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
     </style>
 
 </resources>

@@ -17,9 +17,11 @@ class HomeViewModel constructor(private val repository: MainRepository)  : ViewM
 
     val bestSellerList = MutableLiveData<ArrayList<ProductModel>>()
     val errorMessage = MutableLiveData<String>()
+    val isLoading = MutableLiveData<Boolean>()
 
 
     fun getHomeDetails() {
+        isLoading.postValue(true)
         Timber.d("getHomeDetails")
         val jsonParams = JsonObject()
         jsonParams.addProperty("customer_id", "")
@@ -37,18 +39,18 @@ class HomeViewModel constructor(private val repository: MainRepository)  : ViewM
                 var mObjBestSeller = mJSONData.optJSONObject("best_seller")
                 var mListBestSeller = mObjBestSeller.getJSONArray("bestseller_list")
                 var gson = Gson()
+                var mArrayList = ArrayList<ProductModel>()
+                val arr = Gson().fromJson(mListBestSeller.toString(), Array<ProductModel>::class.java)
+                mArrayList.addAll(arr)
 
-                val mBestSellerList: ArrayList<ProductModel> =
-                    gson.fromJson(mListBestSeller.toString(), ArrayList::class.java) as ArrayList<ProductModel>
-                //val mBestSellerList = gson.fromJson(mListBestSeller.toString(), ArrayList<ProductModel::class.java>).asList()
-
-                Timber.d("mObjBestSeller-${mBestSellerList.size}")
-                bestSellerList.postValue(mBestSellerList)
-                //Timber.d(""+response.body())
+                Timber.d("mObjBestSeller-${mArrayList.size}")
+                bestSellerList.postValue(mArrayList)
+                isLoading.postValue(false)
 
             }
             override fun onFailure(call: Call<JsonArray>, t: Throwable) {
                 errorMessage.postValue(t.message)
+                isLoading.postValue(false)
                 Timber.d("onFailure")
                 Timber.d(t)
             }
