@@ -1,5 +1,7 @@
 package com.practical.network
 
+import com.google.gson.JsonArray
+import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -13,7 +15,7 @@ interface  RetrofitService {
 
     @Headers("Content-Type: application/json")
     @POST("homepage")
-    fun getHomeDetails(@Body params: JsonObject): Call<JsonObject>
+    fun getHomeDetails(@Body params: JsonObject): Call<JsonArray>
 
     companion object {
         var retrofitService: RetrofitService? = null

@@ -29,8 +29,8 @@ class HomeActivity : AppCompatActivity() {
             .get(HomeViewModel::class.java)
 
         binding.rvBestSeller.adapter = adapter
-        viewModel.movieList.observe(this, Observer {
-            Timber.d(TAG, "onCreate: $it")
+        viewModel.bestSellerList.observe(this, Observer {
+            Timber.d(TAG, "-bestSellerList: $it")
             //adapter.setMovieList(it)
         })
 

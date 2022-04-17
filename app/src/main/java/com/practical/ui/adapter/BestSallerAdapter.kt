@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.practical.databinding.AdapterBannersBinding
-import com.practical.network.model.BannerSliderModel
+import com.practical.network.model.ProductModel
 
 class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
-    var movies = mutableListOf<BannerSliderModel>()
-    fun setMovieList(movies: List<BannerSliderModel>) {
-        this.movies = movies.toMutableList()
+    var listProductModel = mutableListOf<ProductModel>()
+    fun setMovieList(listProductModel: List<ProductModel>) {
+        this.listProductModel = listProductModel.toMutableList()
         notifyDataSetChanged()
     }
 
@@ -21,13 +21,13 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        val movie = movies[position]
+        val movie = listProductModel[position]
         //holder.binding.name.text = movie.name
-        Glide.with(holder.itemView.context).load(movie.imageUrl).into(holder.binding.imageview)
+        Glide.with(holder.itemView.context).load(movie.image).into(holder.binding.imageview)
     }
 
     override fun getItemCount(): Int {
-        return movies.size
+        return listProductModel.size
     }
 }
 
