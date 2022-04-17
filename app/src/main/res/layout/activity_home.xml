@@ -18,11 +18,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
+            <!--https://github.com/unaisulhadi/ViewPager2-Carousel/tree/master/app/src/main/java/com/hadi/viewpager2carousel-->
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vpTopBanner"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_200sdp"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

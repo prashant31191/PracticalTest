@@ -3,6 +3,7 @@ package com.practical.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.practical.databinding.AdapterBannersBinding
 import com.practical.network.model.BannerSliderModel
 
@@ -21,7 +22,7 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val movie = movies[position]
-        holder.binding.name.text = movie.name
+        //holder.binding.name.text = movie.name
         Glide.with(holder.itemView.context).load(movie.imageUrl).into(holder.binding.imageview)
     }
 
@@ -30,5 +31,5 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
     }
 }
 
-class MainViewHolder(val binding: AdapterMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+class MainViewHolder(val binding: AdapterBannersBinding) : RecyclerView.ViewHolder(binding.root) {
 }

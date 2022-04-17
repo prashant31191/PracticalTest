@@ -14,7 +14,7 @@
         android:layout_height="@dimen/_100sdp"
         android:scaleType="centerCrop"
         android:layout_marginLeft="@dimen/_8sdp"
-        android:src="@drawable/bg_best_sellers"
+        android:src="@drawable/ic_photo_64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
