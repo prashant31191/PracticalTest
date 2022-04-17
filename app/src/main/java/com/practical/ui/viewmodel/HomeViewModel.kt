@@ -41,7 +41,6 @@ class HomeViewModel constructor(private val repository: MainRepository)  : ViewM
                 var mJson:JsonObject = mJsonArray.get(0) as JsonObject
                 var mJsonData = mJson.get("data")
                 val mJSONData = JSONObject(mJsonData.toString())
-                Timber.d("mJsonData -$mJsonData")
 
                 var mObjBestSeller = mJSONData.optJSONObject("best_seller")
                 var mListBestSeller = mObjBestSeller.getJSONArray("bestseller_list")
@@ -58,39 +57,33 @@ class HomeViewModel constructor(private val repository: MainRepository)  : ViewM
                 var mArrayList = ArrayList<ProductModel>()
                 val arr = gson.fromJson(mListBestSeller.toString(), Array<ProductModel>::class.java)
                 mArrayList.addAll(arr)
-                Timber.d("mArrayList-${mArrayList.size}")
                 bestSellerList.postValue(mArrayList)
 
 
                 var mArrayListMoreCategory = ArrayList<SeeMoreCategoryModel>()
                 val arrMoreCategory = gson.fromJson(mListMoreCategories.toString(), Array<SeeMoreCategoryModel>::class.java)
                 mArrayListMoreCategory.addAll(arrMoreCategory)
-                Timber.d("mArrayListMoreCategory-${mArrayListMoreCategory.size}")
                 seeMoreCategoryModelList.postValue(mArrayListMoreCategory)
 
                 var mArrayListOfferBannerModel = ArrayList<OfferBannerModel>()
                 val arrOfferBannerModel = gson.fromJson(mListOfferBanner.toString(), Array<OfferBannerModel>::class.java)
                 mArrayListOfferBannerModel.addAll(arrOfferBannerModel)
-                Timber.d("mArrayListOfferBannerModel-${mArrayListOfferBannerModel.size}")
                 offerBannerModellList.postValue(mArrayListOfferBannerModel)
 
                 var mArrayBrandModel = ArrayList<BrandModel>()
                 val arrBrandModel = gson.fromJson(mListBrand.toString(), Array<BrandModel>::class.java)
                 mArrayBrandModel.addAll(arrBrandModel)
-                Timber.d("mArrayBrandModel-${mArrayBrandModel.size}")
                 brandModelList.postValue(mArrayBrandModel)
 
                 var mArrayProductModel = ArrayList<ProductModel>()
                 val arrProductModel = gson.fromJson(mListGlam.toString(), Array<ProductModel>::class.java)
                 mArrayProductModel.addAll(arrProductModel)
-                Timber.d("mArrayProductModel-${mArrayProductModel.size}")
                 getGlamList.postValue(mArrayProductModel)
 
 
                 var mArrayBannerSliderModel = ArrayList<BannerSliderModel>()
                 val arrBannerSliderModel = gson.fromJson(mListSliderBanner.toString(), Array<BannerSliderModel>::class.java)
                 mArrayBannerSliderModel.addAll(arrBannerSliderModel)
-                Timber.d("mArrayBannerSliderModel-${mArrayBannerSliderModel.size}")
                 bannerSliderModelList.postValue(mArrayBannerSliderModel)
 
                 isLoading.postValue(false)

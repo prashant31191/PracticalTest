@@ -14,7 +14,6 @@ import com.practical.ui.adapter.*
 import com.practical.ui.viewmodel.HomeViewModel
 
 class HomeActivity : AppCompatActivity() {
-    private val TAG = "HomeActivity"
     private lateinit var binding: ActivityHomeBinding
     lateinit var viewModel: HomeViewModel
     private val retrofitService = RetrofitService.getInstance()
