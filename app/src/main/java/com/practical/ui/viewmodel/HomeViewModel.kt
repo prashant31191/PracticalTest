@@ -5,10 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import com.practical.network.model.BrandModel
-import com.practical.network.model.OfferBannerModel
-import com.practical.network.model.ProductModel
-import com.practical.network.model.SeeMoreCategoryModel
+import com.practical.network.model.*
 import com.practical.repo.MainRepository
 import org.json.JSONObject
 import retrofit2.Call
@@ -23,6 +20,8 @@ class HomeViewModel constructor(private val repository: MainRepository)  : ViewM
     val offerBannerModellList = MutableLiveData<ArrayList<OfferBannerModel>>()
     val brandModelList = MutableLiveData<ArrayList<BrandModel>>()
     val getGlamList = MutableLiveData<ArrayList<ProductModel>>()
+    val bannerSliderModelList = MutableLiveData<ArrayList<BannerSliderModel>>()
+
     val trendingCatName = MutableLiveData<String>()
     val errorMessage = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>()
@@ -49,6 +48,7 @@ class HomeViewModel constructor(private val repository: MainRepository)  : ViewM
                 var mListMoreCategories = mJSONData.getJSONArray("see_more_categories")
                 var mListOfferBanner = mJSONData.getJSONArray("offer_items_banner")
                 var mListBrand = mJSONData.getJSONArray("shop_by_brand")
+                var mListSliderBanner = mJSONData.getJSONArray("banner_slider")
 
                 var mObjGlam = mJSONData.optJSONObject("trending_category")
                 trendingCatName?.postValue(mObjGlam.optString("category_name"))
@@ -85,6 +85,13 @@ class HomeViewModel constructor(private val repository: MainRepository)  : ViewM
                 mArrayProductModel.addAll(arrProductModel)
                 Timber.d("mArrayProductModel-${mArrayProductModel.size}")
                 getGlamList.postValue(mArrayProductModel)
+
+
+                var mArrayBannerSliderModel = ArrayList<BannerSliderModel>()
+                val arrBannerSliderModel = gson.fromJson(mListSliderBanner.toString(), Array<BannerSliderModel>::class.java)
+                mArrayBannerSliderModel.addAll(arrBannerSliderModel)
+                Timber.d("mArrayBannerSliderModel-${mArrayBannerSliderModel.size}")
+                bannerSliderModelList.postValue(mArrayBannerSliderModel)
 
                 isLoading.postValue(false)
 
