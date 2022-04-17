@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 //banner_slider
 @Serializable
-data class BannerSliderModel (
-    var slide_id: String,
-    var mobile_image: String,
+data class OfferBannerModel (
+    var category_id: String,
+    var banner_image: String,
 )

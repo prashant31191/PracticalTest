@@ -10,15 +10,20 @@ import com.practical.network.RetrofitService
 import com.practical.repo.MainRepository
 import com.practical.repo.MyViewModelFactory
 import com.practical.ui.adapter.BestSallerAdaper
+import com.practical.ui.adapter.BrandAdapter
+import com.practical.ui.adapter.MoreCategoryAdapter
+import com.practical.ui.adapter.OfferBannerAdapter
 import com.practical.ui.viewmodel.HomeViewModel
-import timber.log.Timber
 
 class HomeActivity : AppCompatActivity() {
     private val TAG = "HomeActivity"
     private lateinit var binding: ActivityHomeBinding
     lateinit var viewModel: HomeViewModel
     private val retrofitService = RetrofitService.getInstance()
-    val adapter = BestSallerAdaper()
+    val mBestSallerAdaper = BestSallerAdaper()
+    val mMoreCategoryAdapter = MoreCategoryAdapter()
+    val mOfferBannerAdapter = OfferBannerAdapter()
+    val mBrandAdapter = BrandAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +34,26 @@ class HomeActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(retrofitService)))
             .get(HomeViewModel::class.java)
 
-        binding.rvBestSeller.adapter = adapter
+        binding.rvBestSeller.adapter = mBestSallerAdaper
+        binding.rvCategories.adapter = mMoreCategoryAdapter
+        binding.rvOfferBanner.adapter = mOfferBannerAdapter
+        binding.rvBrands.adapter = mBrandAdapter
+
         viewModel.bestSellerList.observe(this, {
             binding?.tvNoData?.visibility = View.GONE
-            Timber.d(TAG, "-bestSellerList: $it")
-            adapter.setList(it)
+            mBestSallerAdaper.setList(it)
+        })
+
+        viewModel.seeMoreCategoryModelList.observe(this, {
+            mMoreCategoryAdapter.setList(it)
+        })
+
+        viewModel.offerBannerModellList.observe(this, {
+            mOfferBannerAdapter.setList(it)
+        })
+
+        viewModel.brandModelList.observe(this, {
+            mBrandAdapter.setList(it)
         })
 
         binding?.tvNoData?.visibility = View.VISIBLE
@@ -44,7 +64,6 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel.errorMessage.observe(this, {
             binding?.tvNoData?.visibility = View.VISIBLE
-            //binding?.tvNoData?.setText(it)
         })
 
         viewModel.isLoading.observe(this, {
@@ -52,6 +71,6 @@ class HomeActivity : AppCompatActivity() {
              binding?.vLoading?.visibility = if(it) View.VISIBLE else View.GONE
         })
 
-        //viewModel.getHomeDetails()
+        viewModel.getHomeDetails()
     }
 }
