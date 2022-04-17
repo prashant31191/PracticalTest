@@ -9,10 +9,7 @@ import com.practical.databinding.ActivityHomeBinding
 import com.practical.network.RetrofitService
 import com.practical.repo.MainRepository
 import com.practical.repo.MyViewModelFactory
-import com.practical.ui.adapter.BestSallerAdaper
-import com.practical.ui.adapter.BrandAdapter
-import com.practical.ui.adapter.MoreCategoryAdapter
-import com.practical.ui.adapter.OfferBannerAdapter
+import com.practical.ui.adapter.*
 import com.practical.ui.viewmodel.HomeViewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -23,6 +20,7 @@ class HomeActivity : AppCompatActivity() {
     val mBestSallerAdaper = BestSallerAdaper()
     val mMoreCategoryAdapter = MoreCategoryAdapter()
     val mOfferBannerAdapter = OfferBannerAdapter()
+    val mGetGlamAdapter = GetGlamAdapter()
     val mBrandAdapter = BrandAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +36,7 @@ class HomeActivity : AppCompatActivity() {
         binding.rvCategories.adapter = mMoreCategoryAdapter
         binding.rvOfferBanner.adapter = mOfferBannerAdapter
         binding.rvBrands.adapter = mBrandAdapter
+        binding.rvGetGlam.adapter = mGetGlamAdapter
 
         viewModel.bestSellerList.observe(this, {
             binding?.tvNoData?.visibility = View.GONE
@@ -54,6 +53,13 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel.brandModelList.observe(this, {
             mBrandAdapter.setList(it)
+        })
+
+        viewModel.getGlamList.observe(this, {
+            mGetGlamAdapter.setList(it)
+        })
+        viewModel.trendingCatName.observe(this, {
+            binding?.tvGetGlam?.setText(it)
         })
 
         binding?.tvNoData?.visibility = View.VISIBLE

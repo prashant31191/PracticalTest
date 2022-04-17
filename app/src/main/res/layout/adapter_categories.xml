@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/_12sdp"
+    android:layout_marginRight="@dimen/_12sdp"
     android:layout_marginBottom="@dimen/_4sdp"
     >
 
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivCategory"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
         android:scaleType="centerCrop"
-        android:layout_marginLeft="@dimen/_8sdp"
         android:src="@drawable/ic_photo_64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,10 +22,11 @@
     <TextView
         android:id="@+id/tvCategoryName"
         style="@style/styTextBlack.Small"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_90sdp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
         android:maxLines="2"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="@+id/ivCategory"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivCategory"

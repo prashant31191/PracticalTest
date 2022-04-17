@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/_180sdp"
     android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/_4sdp"
     android:layout_margin="@dimen/_8sdp">
 
     <androidx.cardview.widget.CardView
@@ -17,6 +18,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:paddingLeft="@dimen/_6sdp"
+            android:paddingRight="@dimen/_6sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -32,7 +36,7 @@
 
             <TextView
                 android:id="@+id/tvBrandName"
-                style="@style/styTextBlack.Normal"
+                style="@style/styTextBlack.Small"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
@@ -48,9 +52,8 @@
                 style="@style/styTextBlack.Normal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_2sdp"
                 android:maxLines="2"
-                android:textSize="@dimen/_20sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvBrandName"
@@ -58,10 +61,10 @@
 
             <TextView
                 android:id="@+id/tvPrice"
-                style="@style/styTextBlack.Normal"
+                style="@style/styTextBlack.Small"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:alpha="0.5"
                 android:maxLines="2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -70,10 +73,10 @@
                 tools:text="@string/app_name" />
             <TextView
                 android:id="@+id/tvFinalPrice"
-                style="@style/styTextBlack.Normal"
+                style="@style/styTextBlack.Small"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:maxLines="2"
                 android:textColor="@color/dark_pink"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +85,7 @@
                 tools:text="@string/app_name" />
             <TextView
                 android:id="@+id/tvDiscount"
-                style="@style/styTextBlack.Normal"
+                style="@style/styTextBlack.Small"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4sdp"

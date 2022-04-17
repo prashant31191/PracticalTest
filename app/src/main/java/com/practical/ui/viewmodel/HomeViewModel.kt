@@ -22,6 +22,8 @@ class HomeViewModel constructor(private val repository: MainRepository)  : ViewM
     val seeMoreCategoryModelList = MutableLiveData<ArrayList<SeeMoreCategoryModel>>()
     val offerBannerModellList = MutableLiveData<ArrayList<OfferBannerModel>>()
     val brandModelList = MutableLiveData<ArrayList<BrandModel>>()
+    val getGlamList = MutableLiveData<ArrayList<ProductModel>>()
+    val trendingCatName = MutableLiveData<String>()
     val errorMessage = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>()
 
@@ -48,6 +50,10 @@ class HomeViewModel constructor(private val repository: MainRepository)  : ViewM
                 var mListOfferBanner = mJSONData.getJSONArray("offer_items_banner")
                 var mListBrand = mJSONData.getJSONArray("shop_by_brand")
 
+                var mObjGlam = mJSONData.optJSONObject("trending_category")
+                trendingCatName?.postValue(mObjGlam.optString("category_name"))
+                var mListGlam = mObjGlam.getJSONArray("list")
+
                 var gson = Gson()
                 var mArrayList = ArrayList<ProductModel>()
                 val arr = gson.fromJson(mListBestSeller.toString(), Array<ProductModel>::class.java)
@@ -73,6 +79,12 @@ class HomeViewModel constructor(private val repository: MainRepository)  : ViewM
                 mArrayBrandModel.addAll(arrBrandModel)
                 Timber.d("mArrayBrandModel-${mArrayBrandModel.size}")
                 brandModelList.postValue(mArrayBrandModel)
+
+                var mArrayProductModel = ArrayList<ProductModel>()
+                val arrProductModel = gson.fromJson(mListGlam.toString(), Array<ProductModel>::class.java)
+                mArrayProductModel.addAll(arrProductModel)
+                Timber.d("mArrayProductModel-${mArrayProductModel.size}")
+                getGlamList.postValue(mArrayProductModel)
 
                 isLoading.postValue(false)
 

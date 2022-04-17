@@ -5,29 +5,31 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.practical.databinding.AdapterBannersBinding
-import com.practical.databinding.AdapterBestsallerBinding
+import com.practical.databinding.AdapterGetGlamBinding
 import com.practical.network.model.ProductModel
 
 
-class BestSallerAdaper : RecyclerView.Adapter<MainViewHolder>() {
+class GetGlamAdapter : RecyclerView.Adapter<GlamViewHolder>() {
     var listProductModel = mutableListOf<ProductModel>()
     fun setList(listProductModel: List<ProductModel>) {
         this.listProductModel = listProductModel.toMutableList()
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GlamViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = AdapterBestsallerBinding.inflate(inflater, parent, false)
-        return MainViewHolder(binding)
+        val binding = AdapterGetGlamBinding.inflate(inflater, parent, false)
+        return GlamViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GlamViewHolder, position: Int) {
         val product = listProductModel.get(position)
-        Glide.with(holder.itemView.context).load(product.image).into(holder.binding.ivCategory)
+        Glide.with(holder.itemView.context).load(product.image).into(holder.binding.ivPhoto)
         holder.binding.tvBrandName.setText(product.mgs_brand)
         holder.binding.tvProductName.setText(product.name)
         holder.binding.tvPrice.setText(product.currency_code +" "+product.price)
+        holder.binding.tvFinalPrice.setText(product.currency_code +" "+product.special_price)
+        holder.binding.tvDiscount.setText("("+product.discount+")")
     }
 
     override fun getItemCount(): Int {
@@ -35,5 +37,5 @@ class BestSallerAdaper : RecyclerView.Adapter<MainViewHolder>() {
     }
 }
 
-class MainViewHolder(val binding: AdapterBestsallerBinding) : RecyclerView.ViewHolder(binding.root) {
+class GlamViewHolder(val binding: AdapterGetGlamBinding) : RecyclerView.ViewHolder(binding.root) {
 }
