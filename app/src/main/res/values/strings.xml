@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Practical</string>
+    <string name="lbl_best_seller">Best Seller</string>
+    <string name="lbl_get_glam">Get Glam</string>
+    <string name="lbl_see_all">See all</string>
+    <string name="lbl_see_more_categories">See More Categories</string>
+    <string name="lbl_shop_by_brands">Shop by Brands</string>
 </resources>

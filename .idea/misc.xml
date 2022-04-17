@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/github/Practical/Practical/app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="..\:/github/Practical/Practical/app/src/main/res/layout/activity_main.xml" value="0.178125" />
         <entry key="..\:/github/Practical/Practical/app/src/main/res/layout/adapter_banners.xml" value="0.1921875" />
+        <entry key="..\:/github/Practical/Practical/app/src/main/res/layout/adapter_brands.xml" value="0.33" />
+        <entry key="..\:/github/Practical/Practical/app/src/main/res/layout/adapter_categories.xml" value="0.1921875" />
+        <entry key="..\:/github/Practical/Practical/app/src/main/res/layout/adapter_offerbanner.xml" value="0.1921875" />
       </map>
     </option>
   </component>

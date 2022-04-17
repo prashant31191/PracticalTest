@@ -28,7 +28,7 @@ class HomeActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(retrofitService)))
             .get(HomeViewModel::class.java)
 
-        binding.recyclerview.adapter = adapter
+        binding.rvBestSeller.adapter = adapter
         viewModel.movieList.observe(this, Observer {
             Timber.d(TAG, "onCreate: $it")
             //adapter.setMovieList(it)
